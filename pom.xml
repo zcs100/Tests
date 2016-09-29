@@ -7,6 +7,9 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>TestNIO</module>
+    <module>TestSpring</module>
+    <module>TestActiveMQ</module>
+    <module>TestRedis</module>
   </modules>
   <name>Tests Maven Webapp</name>
   <url>http://maven.apache.org</url>
