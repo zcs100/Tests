@@ -2,7 +2,6 @@
 *.ipr
 *.iws
 .idea/
-TestActiveMQ/TestActiveMQ.iml
-TestRedis/TestRedis.iml
-TestSpring/TestSpring.iml
-TestNIO/TestNIO.iml
+.project
+.idea
+
