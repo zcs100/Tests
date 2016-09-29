@@ -16,4 +16,7 @@ hs_err_pid*
 *.ipr
 *.iws
 .idea/
-*.xml
+TestActiveMQ/TestActiveMQ.iml
+TestRedis/TestRedis.iml
+TestSpring/TestSpring.iml
+TestNIO/TestNIO.iml
