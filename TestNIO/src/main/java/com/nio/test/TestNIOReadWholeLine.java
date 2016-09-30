@@ -18,7 +18,7 @@ public class TestNIOReadWholeLine {
         FileChannel channel = file.getChannel();
 
         ByteBuffer byteBuffer = ByteBuffer.allocate(256);
-        
+       // while (channel.)
 
     }
 
