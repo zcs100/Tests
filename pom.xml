@@ -10,7 +10,6 @@
     <module>TestSpring</module>
     <module>TestActiveMQ</module>
     <module>TestRedis</module>
-    <module>TestQuartz</module>
   </modules>
   <name>Tests Maven Webapp</name>
   <url>http://maven.apache.org</url>
