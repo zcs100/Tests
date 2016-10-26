@@ -13,9 +13,10 @@
   </modules>
   <name>Tests Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  <build>
-    <finalName>Tests</finalName>
-  </build>
+
+  <properties>
+    <org.springframework.version>4.3.3.RELEASE</org.springframework.version>
+  </properties>
 
   <dependencies>
     <dependency>
@@ -24,4 +25,5 @@
       <version>4.11</version>
     </dependency>
   </dependencies>
+
 </project>
