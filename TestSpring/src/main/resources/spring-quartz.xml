@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+    <context:property-placeholder location="classpath:config-dao.properties"/>
 
+    <bean id="scheduleDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${quartz.driverClass}" />
+        <property name="jdbcUrl" value="${quartz.jdbcUrl}" />
+        <property name="user" value="${quartz.user}" />
+        <property name="password" value="${quartz.password}" />
+        <property name="minPoolSize" value="1" />
+        <property name="maxPoolSize" value="15" />
+        <property name="initialPoolSize" value="1" />
+    </bean>
 
+    <bean id="tranManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="scheduleDataSource"/>
+    </bean>
+
+    <bean id="scheduleFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
+        <property name="configLocation" value="classpath:quartz.properties"/>
+        <property name="dataSource" ref="scheduleDataSource"/>
+        <property name="jobDetails" >
+            <list>
+                <ref bean="firstJob"/>
+            </list>
+        </property>
+        <property name="triggers">
+            <list>
+                <ref bean="firstJobTrigger"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="firstJob"
+          class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass"
+                  value="com.spring.quartz.FirstJob" />
+        <property name="durability" value="true" />
+        <property name="group" value="one" />
+        <property name="description" value="First job" />
+    </bean>
+    <bean id="firstJobTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="firstJob" />
+        <property name="cronExpression" value="0 * * 15 11 ? 2016 " />
+        <property name="misfireInstruction" value="2"/>
+    </bean>
 </beans>
