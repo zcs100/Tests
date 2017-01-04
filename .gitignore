@@ -3,6 +3,13 @@
 *.iws
 .idea/
 .project
-.idea
+.idea/workspace.xml
 TestSpring/target
+TestRedis/target
+TestNIO/target
+TestActiveMQ/target
+TestActiveMQ/TestActiveMQ.iml
+TestRedis/TestRedis.iml
+
+
 
